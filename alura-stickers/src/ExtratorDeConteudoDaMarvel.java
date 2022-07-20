@@ -2,11 +2,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class ExtratorDeConteudoDaNasa implements ExtratorDeConteudo{
-    
-    public List<Conteudo> extraiConteudos(String json){
+public class ExtratorDeConteudoDaMarvel implements ExtratorDeConteudo {
 
-        // extrair so os dados que interessam (titulo, poster, classificacao)
+    @Override
+    public List<Conteudo> extraiConteudos(String json) {
         JsonParser parser = new JsonParser();
         List<Map<String, String>> listaDeAtributos = parser.parse(json);
         
@@ -14,7 +13,7 @@ public class ExtratorDeConteudoDaNasa implements ExtratorDeConteudo{
 
         // popular a lista de conteudos
         for (Map<String, String> atributos : listaDeAtributos) {
-            String titulo= atributos.get("title");
+            String titulo= atributos.get("name");
             if (titulo.contains(":")) {
                 titulo = titulo.replace(":", " -");
                 
@@ -22,11 +21,11 @@ public class ExtratorDeConteudoDaNasa implements ExtratorDeConteudo{
                 titulo = titulo.replace("/", " ");
             }
             else{
-                titulo = atributos.get("title");
+                titulo = atributos.get("name");
             }
             String urlImagem;
-            if (atributos.get("url") != null) {
-                urlImagem = atributos.get("url");
+            if (atributos.get("path") != null) {
+                urlImagem = atributos.get("path") + ".jpg" ;
             } else {
                 continue;
             }
@@ -38,4 +37,5 @@ public class ExtratorDeConteudoDaNasa implements ExtratorDeConteudo{
 
         return conteudos;
     }
+    
 }

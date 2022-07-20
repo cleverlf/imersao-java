@@ -10,10 +10,13 @@ public class App {
         // fazer uma conexao HTTP e buscar dados q contenham titulo e imagem
         // String url = "https://api.themoviedb.org/3/trending/all/day?api_key=18b28a0f741c6bb5155f7fd2438ab796";  
         // ExtratorDeConteudo extrator = new ExtratorDeConteudoDoTMDB();
-
-        String url = "https://api.nasa.gov/planetary/apod?api_key=aMxMXff4fK23QXv5wGhF9lKJaIaZGy4fdggZVtSv&start_date=2022-06-01&end_date=2022-06-30";  
-        ExtratorDeConteudo extrator = new ExtratorDeConteudoDaNasa();       
         
+        // String url = "https://api.nasa.gov/planetary/apod?api_key=aMxMXff4fK23QXv5wGhF9lKJaIaZGy4fdggZVtSv&start_date=2022-06-01&end_date=2022-06-30";  
+        // ExtratorDeConteudo extrator = new ExtratorDeConteudoDaNasa();       
+        
+        String url = "https://gateway.marvel.com/v1/public/characters?ts=1658339677&apikey=b0c7fc8163cdaf499e949933dbebf10c&hash=05ac4941bd3ec2ad876a3220765a7725";
+        ExtratorDeConteudo extrator = new ExtratorDeConteudoDaMarvel();
+
         var http = new ClienteHttp();
         String json = http.buscaDados(url);        
 
