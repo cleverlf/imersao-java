@@ -8,11 +8,15 @@ import java.util.regex.Pattern;
 public class JsonParser {
 
     // regex101.com
-    private static final Pattern REGEX_ITENS = Pattern.compile(".*\\[(.+)\\].*");
-    private static final Pattern REGEX_ATRIBUTOS_JSON = Pattern.compile("\"(.+?)\":\"(.*?)\"");
+    // parser do tmdb - 
+    private static final Pattern REGEX_ITEMS = Pattern.compile("\\[(.+)\\]");
+    // parser do tmdb - 
+    private static final Pattern REGEX_ATRIBUTOS_JSON = Pattern.compile("\"(.+?)\":\"?(.*?)\"?,");
+    //private static final Pattern REGEX_ITEMS = Pattern.compile(".*\\[(.+)\\].*");
+    //private static final Pattern REGEX_ATRIBUTOS_JSON = Pattern.compile("\"(.+?)\":\"(.*?)\"");
 
     public List<Map<String, String>> parse(String json) throws IllegalAccessException {
-        Matcher matcher = REGEX_ITENS.matcher(json);
+        Matcher matcher = REGEX_ITEMS.matcher(json);
         if (!matcher.find()) {
 
             throw new IllegalAccessException("Não encontrou items.");
