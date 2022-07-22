@@ -25,8 +25,8 @@ public class ExtratorDeConteudoDaNasa implements ExtratorDeConteudo{
                 titulo = atributos.get("title");
             }
             String urlImagem;
-            if (atributos.get("url") != null) {
-                urlImagem = atributos.get("url");
+            if (atributos.get("hdurl") != null) {
+                urlImagem = atributos.get("hdurl");
             } else {
                 continue;
             }
